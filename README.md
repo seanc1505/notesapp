@@ -1,9 +1,12 @@
 # notesapp
+
 Starter project for web development
+
+# Tutorial 1 
 
 [**Tutorial source**](https://www.youtube.com/watch?v=MwZwr5Tvyxo)
 
-## steps
+## Getting set up with python virtual env and running basic flask
 
 1. Create vitural env
    1. `python -m venv env`
@@ -18,5 +21,25 @@ Starter project for web development
    1. `set FLASK_APP=<filename>`
    2. `flask run`
 
+## Continous debug
 
-   
+1. `set FLASK_DEBUG = 1 `
+   1. This opens in debug mode
+
+## Running files via python 
+
+```
+   if __name__ == "__main__":
+       app.run(debug=True)
+```
+## @app.route
+
+1. Dictates url for the functions
+2. Can point multiple routes to the same page#
+
+Home page at `@app.route("/") @app.route("/home")`
+
+
+# Tutorial 2 
+
+[**Tutorial source**](https://www.youtube.com/watch?v=QnDWIZuWYW0)
