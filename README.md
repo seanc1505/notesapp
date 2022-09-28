@@ -242,6 +242,19 @@ We use SQLlite for dev and then move to PostGres
 * ` User.query.first()`
 * ``db.drop_all`` deletes all files
 
+
+# Tutorial 5 - Package Strucutre
+
+[**Tutorial source**](https://www.youtube.com/watch?v=44PvX0Yv368)
+ 
+* moving models to models.py
+  * We get circular imports
+  * create a package for flask_blog (new folder with **__init__**)
+    * populate init.py with all imports
+* Move all files into it
+* Create routes.py and put all route code in there
+* Rename flask_blog to run.py
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
