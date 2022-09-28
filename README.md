@@ -107,3 +107,7 @@ To use a container use lines;
  <div class = "container">
  </div>
 ```
+
+
+## Adding Navbar 
+
