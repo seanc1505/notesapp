@@ -43,3 +43,25 @@ Home page at `@app.route("/") @app.route("/home")`
 # Tutorial 2 
 
 [**Tutorial source**](https://www.youtube.com/watch?v=QnDWIZuWYW0)
+
+
+## Templates
+
+1. Makes sense to return a template within a function rather than returning a HTML string for cleanlieness
+2. Create a templates folder
+3. Create a html file for each page
+4. import render_templates
+   1. ``return render_templates('home.html')``
+
+Flask uses Jinja2 for writing code within templates
+
+Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
+
+**Sample code block for a dict `posts`**
+```txt
+   {% for post in posts %}
+      <h1>{{post.title}}</h1>
+      <p>By {{post.author}} on {{post.date_posted}}<p>
+      <p> {{post.content}} </p>
+   {% endfor %}
+```
