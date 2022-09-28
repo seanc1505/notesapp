@@ -165,6 +165,39 @@ To use a container use lines;
 * Added the html code from snippets/article.html into layout.html
 * Splits posts into individual blocks and gives good formatting
 
+# Tutorial 3 - Forms and user input
+
+[**Tutorial source**](https://www.youtube.com/watch?v=UIJKdCIEXUQ)
+
+## Forms
+
+* Creating forms from scratch is difficult but there are many extensions, most common is **WT-forms**, install with pip install ``flask-wtf``
+  * We can write python classes which represent html forms
+* Creating 2 forms, login and register
+
+```python
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, Email, EqualTo
+class RegistrationForm(FlaskForm):
+   username = StringField('Username',
+                            validators=[DataRequired(),
+                                        Length(min=2,max=20)]
+                            )
+```
+
+* Create a form by creating a class with variables that are generated as a type of field
+* Create a html file for each form
+* extend layout
+* Each entry into form gets a `<div class="form-group">`
+  * in this div goes html info
+    * ``{{ form.email.label(class="form-control-label") }}``
+    * ``{{ form.email(class="form-control form-control-lg") }}``
+  * Also Add error information in terms of if statement `{% if form.email.errors %}`
+* Add data validation to main file functions
+
+
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
