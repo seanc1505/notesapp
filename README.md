@@ -219,6 +219,29 @@ We use SQLlite for dev and then move to PostGres
     * ``id = db.Column(db.Integer, primary_key = True)``
 6. Set a repr method
 
+```
+   def __repr__(self): 
+      return f"Post('{self.title}')
+```
+
+## create database
+
+* open terminal in project dir
+* `from flask_blog import db`
+* `db.create_all()`
+* manually add data
+  * `from flask_blog import User`
+  * `user_1 = User(User(username='sean',email='s@demo.com',password='password')`
+  * `db.session.add(user_2) `
+  * `db.session.commit()`
+
+## access data in terminal
+
+* `User.query.all()`
+* ` User.query.filter_by(username='sean').all()`
+* ` User.query.first()`
+* ``db.drop_all`` deletes all files
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
