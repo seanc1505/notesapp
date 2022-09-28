@@ -1,4 +1,3 @@
-from turtle import pos
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -25,7 +24,7 @@ def hello():
 
 @app.route("/about")
 def hi_there():
-    return render_template('about.html')
+    return render_template('about.html',title="About")
 
 if __name__ == "__main__":
     app.run(debug=True)

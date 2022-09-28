@@ -57,6 +57,8 @@ Flask uses Jinja2 for writing code within templates
 
 Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
 
+### for loop using jinja2
+
 **Sample code block for a dict `posts`**
 ```txt
    {% for post in posts %}
@@ -64,4 +66,44 @@ Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
       <p>By {{post.author}} on {{post.date_posted}}<p>
       <p> {{post.content}} </p>
    {% endfor %}
+```
+
+### if else
+
+```
+{% if title %}
+   <title>Flask Blog - {{title}} </title>
+{% else %}
+   <title>Flask Blog</title>
+{% endif %}
+```
+
+## Template Inheritance 
+
+* Important to maintain as much unique information in 1 place
+* import common data from one place
+* Uses the `block` key word
+  * `{% block content %}{% endblock %}`
+* To inherit the template, use ;
+
+```jinja2
+{% extends  "layout.html" %}
+{% block content %}
+```
+
+## Bootstrap
+
+* A popular library to add styles to website
+
+### To add bootstrap
+
+Open starter template from documentation
+(can use flask bootstrap)
+We need to pull in specific CSS and Javascript into out layout template
+
+To use a container use lines;
+
+``` html
+ <div class = "container">
+ </div>
 ```
