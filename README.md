@@ -134,7 +134,7 @@ To use a container use lines;
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" 
 ```
 
-## Adding Navigation bar and global styles 
+## Adding Navigation bar and global styles
 
 * Uses alot of HTML code, explained below
 
@@ -196,7 +196,28 @@ class RegistrationForm(FlaskForm):
   * Also Add error information in terms of if statement `{% if form.email.errors %}`
 * Add data validation to main file functions
 
+# Tutorial 4 - Database with SQLAlchemy
 
+[**Tutorial source**](https://www.youtube.com/watch?v=cYWiDiIUxQc)
+
+ORM - Object relational mapper
+
+We can use different types of databases with this python methof
+We use SQLlite for dev and then move to PostGres
+
+1. `from flask_sqlalchemy import SQLAlchemy`
+2. Need to specify URI for database (where database is located)
+   * For now using SQLlite database (A file on filesytem)
+   * Must be set as a configuration `app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///site.db'`
+   * Relative path using `///`
+3. Create database instance
+   * `db = SQLAlchemy(app)`
+   * Can represent database structure as classes (models)
+4. Creating models in flask_blog.py for now
+   * create models via a class `class User(db.Model):`
+5. Columns are represented by class vars
+    * ``id = db.Column(db.Integer, primary_key = True)``
+6. Set a repr method
 
 # html learnings
 
@@ -207,4 +228,3 @@ class RegistrationForm(FlaskForm):
   * The `<div>` tag is used as a container for HTML elements - which is then styled with CSS or manipulated with JavaScript.
 * `{{}}` dictates a code injection
   * `<link rel="stylesheet" type = "text/css" href="{{ url_for('static',filename='main.css')}}">` Injects the url_for function to find location of main.css
-    
