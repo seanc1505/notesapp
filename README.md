@@ -255,6 +255,42 @@ We use SQLlite for dev and then move to PostGres
 * Create routes.py and put all route code in there
 * Rename flask_blog to run.py
 
+# Tutorial 5 - User Authentication
+
+
+[**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
+
+## addding password hashing
+* dont want to use plain text password storage
+  * need to use a hashing algorithim
+    * `pip install flask-bcrypt `
+    * Add ``bcrypt = Bcrypt(app)`` to init.py
+    * add following lines to the register route
+
+
+## Create account
+
+```python 
+hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+user = User(username = form.username.data, email = form.email.data, password=hashed_password)
+db.session.add(user)
+db.session.commit()
+```
+
+## Verifying unique email and user
+
+Adding the following to the register form
+
+```python
+def validate_username(self,username):
+        user = User.query.filter_by(username=username.data).first()
+        if user:    
+            raise ValidationError('This username is taken, please try another')
+    
+```
+
+
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
