@@ -219,7 +219,7 @@ We use SQLlite for dev and then move to PostGres
     * ``id = db.Column(db.Integer, primary_key = True)``
 6. Set a repr method
 
-```
+```python
    def __repr__(self): 
       return f"Post('{self.title}')
 ```
@@ -232,24 +232,23 @@ We use SQLlite for dev and then move to PostGres
 * manually add data
   * `from flask_blog import User`
   * `user_1 = User(User(username='sean',email='s@demo.com',password='password')`
-  * `db.session.add(user_2) `
+  * `db.session.add(user_2)`
   * `db.session.commit()`
 
 ## access data in terminal
 
 * `User.query.all()`
-* ` User.query.filter_by(username='sean').all()`
-* ` User.query.first()`
+* `User.query.filter_by(username='sean').all()`
+* `User.query.first()`
 * ``db.drop_all`` deletes all files
-
 
 # Tutorial 5 - Package Strucutre
 
 [**Tutorial source**](https://www.youtube.com/watch?v=44PvX0Yv368)
- 
+
 * moving models to models.py
   * We get circular imports
-  * create a package for flask_blog (new folder with **__init__**)
+  * create a package for flask_blog (new folder with **\_\_init\_\_**)
     * populate init.py with all imports
 * Move all files into it
 * Create routes.py and put all route code in there
@@ -257,20 +256,19 @@ We use SQLlite for dev and then move to PostGres
 
 # Tutorial 6 - User Authentication
 
-
 [**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
 
 ## addding password hashing
+
 * dont want to use plain text password storage
   * need to use a hashing algorithim
-    * `pip install flask-bcrypt `
+    * `pip install flask-bcrypt`
     * Add ``bcrypt = Bcrypt(app)`` to init.py
     * add following lines to the register route
 
-
 ## Create account
 
-```python 
+```python
 hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
 user = User(username = form.username.data, email = form.email.data, password=hashed_password)
 db.session.add(user)
@@ -324,9 +322,9 @@ def logout():
 
 [**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
 
-## Displaying profile details on Account page 
+## Displaying profile details on Account page
 
-1. added profile photo, create folder in static 
+1. added profile photo, create folder in static
 2. Add html for displaying
 3. Pull profile pic from static folder in routes.py
 
@@ -335,6 +333,8 @@ def logout():
 1. Created update form in forms.py
 2. Added form html to accounts.html
 3. Added database change to routes.py
+4. Added aditional form block to change picture
+5. Added html code to display form
 
 # html learnings
 
