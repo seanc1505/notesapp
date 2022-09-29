@@ -309,6 +309,17 @@ if current_user.is_authenticated:
    return redirect(url_for('home'))
 ```
 
+## Logout
+
+Add the following section to a logout route
+
+```python
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+```
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
