@@ -255,7 +255,7 @@ We use SQLlite for dev and then move to PostGres
 * Create routes.py and put all route code in there
 * Rename flask_blog to run.py
 
-# Tutorial 5 - User Authentication
+# Tutorial 6 - User Authentication
 
 
 [**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
@@ -319,6 +319,14 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 ```
+
+# Tutorial 7 - User Account and Profile Picture
+
+[**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
+
+1. added profile photo, create folder in static 
+2. Add html for displaying
+3. Pull profile pic from static folder in routes.py
 
 # html learnings
 
