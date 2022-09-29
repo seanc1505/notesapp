@@ -324,9 +324,17 @@ def logout():
 
 [**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
 
+## Displaying profile details on Account page 
+
 1. added profile photo, create folder in static 
 2. Add html for displaying
 3. Pull profile pic from static folder in routes.py
+
+## Editing account details
+
+1. Created update form in forms.py
+2. Added form html to accounts.html
+3. Added database change to routes.py
 
 # html learnings
 
