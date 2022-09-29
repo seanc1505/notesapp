@@ -289,7 +289,25 @@ def validate_username(self,username):
     
 ```
 
+## login
 
+* Create a funciton with a decerator
+  * reloading a user from user id stored in session
+* Adding following to models.py
+
+```python
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+```
+
+Added check if logged in to return to home page if login is pressed
+
+```python
+if current_user.is_authenticated:
+   return redirect(url_for('home'))
+```
 
 # html learnings
 
