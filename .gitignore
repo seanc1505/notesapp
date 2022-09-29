@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 *.db
+project/flaskblog/static/profile_pics/

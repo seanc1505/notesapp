@@ -335,6 +335,7 @@ def logout():
 3. Added database change to routes.py
 4. Added aditional form block to change picture
 5. Added html code to display form
+6. Added code to routes to save image details in database
 
 # html learnings
 
