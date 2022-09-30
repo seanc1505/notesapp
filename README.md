@@ -337,6 +337,20 @@ def logout():
 5. Added html code to display form
 6. Added code to routes to save image details in database
 
+# Tutorial 8 - Create, Update, and Delete Posts
+
+[**Tutorial source**](https://www.youtube.com/watch?v=u0oDDZrDz9U)
+
+## Creating a new post
+1. Create a new post.html
+   1. populate with form to add title content and post
+2. Create a form to add content title and post
+3. Create a route for new post
+   1. Create a new post object and pass in the data from a post form
+   2. Add post to database
+4. Add route to navbar
+5. Update home route to look for posts via query rather than from fake data
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
