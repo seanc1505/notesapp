@@ -351,6 +351,13 @@ def logout():
 4. Add route to navbar
 5. Update home route to look for posts via query rather than from fake data
 
+## Deleteing/Editing a post
+
+1. Add a route that takes you to edit post id
+2. 
+
+``Post.query.get_or_404`` returns the content or 404
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
