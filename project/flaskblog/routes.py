@@ -111,4 +111,13 @@ def edit_post(post_id):
     if post.author != current_user:
         abort(403)
     form = PostFrom()
-    return render_template('new_post.html',title="Edit Post" ,form=form, legend = "Update "+  post.title)
+    if form.validate_on_submit():
+        post.title =form.title.data
+        post.content = form.content.data
+        db.session.commit()
+        flash('Post Updated!','success')
+        return redirect(url_for('post',post_id = post.id))
+    elif request.method == "GET":
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('new_post.html',title="Edit Post" ,form=form, legend = "Update Post: "+  post.title)
