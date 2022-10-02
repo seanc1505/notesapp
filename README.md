@@ -367,6 +367,35 @@ def logout():
    1. Only allows POST methods not gets.
    2. Only allows authors of post to post
 
+# Tutorial
+
+## Adding pagination
+
+1. `posts = Post.query.paginate(per_page=5,page=2)`
+2. `posts.total` = total num pages
+3. Adding to routes
+
+```python
+page = request.args.get('page',1,type=int)
+posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_page=5)
+```
+
+4. Change to home.html to look at posts.items
+5. Added buttons to flick through pages
+
+## Added user posts
+
+1. Basically same as home page but looks at user posts instead
+2. Added below to routes
+
+```python 
+   page = request.args.get('page',1,type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate( page= page, per_page=5)
+```
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
