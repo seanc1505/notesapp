@@ -351,12 +351,21 @@ def logout():
 4. Add route to navbar
 5. Update home route to look for posts via query rather than from fake data
 
-## Deleteing/Editing a post
+``Post.query.get_or_404`` returns the content or 404
+
+## Editing a post
 
 1. Add a route that takes you to edit post id
-2. 
+2. only allow edit if user is author `if post.author != current_user: abort(403)`
+3. Use the create post form to pull in title and content changes and commit those
 
-``Post.query.get_or_404`` returns the content or 404
+## Deleteing a post
+
+1. Added a modal to the post.html which is a pop up for deletion confirmation 
+   1. Taken from bootstrap example
+2. Added a route for delete once confirmed, it deletes the content
+   1. Only allows POST methods not gets.
+   2. Only allows authors of post to post
 
 # html learnings
 
