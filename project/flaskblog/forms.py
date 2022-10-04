@@ -64,3 +64,21 @@ class PostFrom(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class RequestPasswordReset(FlaskForm):
+    email = StringField('Email',
+                            validators=[DataRequired(),
+                                        Email()])
+    submit = SubmitField('Reset Password')
+
+    def validate_username(self,username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is None:    
+            raise ValidationError('This username doesn\'t exist, have you registered?')
+ 
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password',
+                            validators=[DataRequired()])       
+    confirm_password = PasswordField('Confirm password',
+                            validators=[DataRequired(),EqualTo('password')])       
+    submit = SubmitField('Reset Password')
