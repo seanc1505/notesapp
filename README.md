@@ -342,6 +342,7 @@ def logout():
 [**Tutorial source**](https://www.youtube.com/watch?v=u0oDDZrDz9U)
 
 ## Creating a new post
+
 1. Create a new post.html
    1. populate with form to add title content and post
 2. Create a form to add content title and post
@@ -361,13 +362,15 @@ def logout():
 
 ## Deleteing a post
 
-1. Added a modal to the post.html which is a pop up for deletion confirmation 
+1. Added a modal to the post.html which is a pop up for deletion confirmation
    1. Taken from bootstrap example
 2. Added a route for delete once confirmed, it deletes the content
    1. Only allows POST methods not gets.
    2. Only allows authors of post to post
 
-# Tutorial
+# Tutorial 9 Adding pagination
+
+[**Tutorial source**](https://www.youtube.com/watch?v=PSWf2TjTGNY)
 
 ## Adding pagination
 
@@ -388,13 +391,21 @@ posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_p
 1. Basically same as home page but looks at user posts instead
 2. Added below to routes
 
-```python 
+```python
    page = request.args.get('page',1,type=int)
     user = User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(author=user)\
         .order_by(Post.date_posted.desc())\
         .paginate( page= page, per_page=5)
 ```
+
+# Tutorial 10 - Email password and reset
+
+[**Tutorial source**](https://www.youtube.com/watch?v=vutyTx7IaAI)
+
+## Time sensitive token
+
+`from itsdangerous import TimedJSONWebSignatureSerializer as Serializer` 
 
 # html learnings
 
