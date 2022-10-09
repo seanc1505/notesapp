@@ -405,7 +405,16 @@ posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_p
 
 ## Time sensitive token
 
-`from itsdangerous import TimedJSONWebSignatureSerializer as Serializer` 
+`from itsdangerous import TimedJSONWebSignatureSerializer as Serializer`
+
+# Tutorial 11 - Blueprints and Configuration
+
+[**Tutorial source**](https://www.youtube.com/watch?v=Wfx4YBzg16s)
+
+## Breaking up into blueprints
+
+1. Create a init.py in each package
+2. 
 
 # html learnings
 
