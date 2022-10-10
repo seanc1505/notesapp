@@ -425,6 +425,23 @@ posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_p
 8. import blueprints into main init.py
 9. Update all files with correct import packages
 
+# Tutorial 12 - Error Handling
+
+[**Tutorial source**](https://www.youtube.com/watch?v=uVNfQDohYNI)
+
+1. New blueprint, errors
+   1. create new package
+2. Add errors accoring to the code setion below
+3. Add relevant HTML files and include these in the handlers file
+4. add the error blueprint to the create app function
+
+```python
+@errors.app_errorhandler(404)
+def error_404(error):
+    return render_template('errors/404.html'),404
+```
+
+
 # html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
