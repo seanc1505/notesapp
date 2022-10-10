@@ -2,11 +2,11 @@
 
 Starter project for web development
 
-# Tutorial 1
+## Tutorial 1
 
 [**Tutorial source**](https://www.youtube.com/watch?v=MwZwr5Tvyxo)
 
-## Getting set up with python virtual env and running basic flask
+### Getting set up with python virtual env and running basic flask
 
 1. Create vitural env
    1. `python -m venv env`
@@ -21,30 +21,30 @@ Starter project for web development
    1. `set FLASK_APP=<filename>`
    2. `flask run`
 
-## Continous debug
+### Continous debug
 
 1. `set FLASK_DEBUG = 1`
    1. This opens in debug mode
 
-## Running files via python
+### Running files via python
 
 ```python
    if __name__ == "__main__":
        app.run(debug=True)
 ```
 
-## @app.route
+### @app.route
 
 1. Dictates url for the functions
 2. Can point multiple routes to the same page#
 
 Home page at `@app.route("/") @app.route("/home")`
 
-# Tutorial 2
+## Tutorial 2
 
 [**Tutorial source**](https://www.youtube.com/watch?v=QnDWIZuWYW0)
 
-## Templates
+### Templates
 
 1. Makes sense to return a template within a function rather than returning a HTML string for cleanlieness
 2. Create a templates folder
@@ -56,7 +56,7 @@ Flask uses Jinja2 for writing code within templates
 
 Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
 
-### for loop using jinja2
+#### for loop using jinja2
 
 **Sample code block for a dict `posts`**
 
@@ -68,7 +68,7 @@ Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
    {% endfor %}
 ```
 
-### if else
+#### if else
 
 ```html
 {% if title %}
@@ -78,7 +78,7 @@ Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
 {% endif %}
 ```
 
-## Template Inheritance
+### Template Inheritance
 
 * Important to maintain as much unique information in 1 place
 * import common data from one place
@@ -91,11 +91,11 @@ Use a code block such as `{%for post in posts%}` and end with ``{%endfor%}``
 {% block content %}
 ```
 
-## Bootstrap
+### Bootstrap
 
 * A popular library to add styles to website
 
-### To add bootstrap
+#### To add bootstrap
 
 Open starter template from documentation
 (can use flask bootstrap)
@@ -134,24 +134,24 @@ To use a container use lines;
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" 
 ```
 
-## Adding Navigation bar and global styles
+### Adding Navigation bar and global styles
 
 * Uses alot of HTML code, explained below
 
-### Navbar
+#### Navbar
 
 * This code snippet is added to `<body></body>`
 * The enitre snippet is stored in snippet/navbar.html
 * Added a navbar with some boostrap classes
 * Is responsive to screen size
 
-### main section for content
+#### main section for content
 
 * The enitre snippet is stored in snippet/main.html
 * This is where we now put content from dictionary of content
 * Goes in body tags
 
-### Custom styles that are non bootstrap specific
+#### Custom styles that are non bootstrap specific
 
 * CSS files go in a static directory
 * To use them in the layout.html file
@@ -160,16 +160,16 @@ To use a container use lines;
     * Href says where file is.
     * url for points to static directory and file name of main.css
 
-## Improving formatting of blog posts
+### Improving formatting of blog posts
 
 * Added the html code from snippets/article.html into layout.html
 * Splits posts into individual blocks and gives good formatting
 
-# Tutorial 3 - Forms and user input
+## Tutorial 3 - Forms and user input
 
 [**Tutorial source**](https://www.youtube.com/watch?v=UIJKdCIEXUQ)
 
-## Forms
+### Forms
 
 * Creating forms from scratch is difficult but there are many extensions, most common is **WT-forms**, install with pip install ``flask-wtf``
   * We can write python classes which represent html forms
@@ -196,7 +196,7 @@ class RegistrationForm(FlaskForm):
   * Also Add error information in terms of if statement `{% if form.email.errors %}`
 * Add data validation to main file functions
 
-# Tutorial 4 - Database with SQLAlchemy
+## Tutorial 4 - Database with SQLAlchemy
 
 [**Tutorial source**](https://www.youtube.com/watch?v=cYWiDiIUxQc)
 
@@ -224,7 +224,7 @@ We use SQLlite for dev and then move to PostGres
       return f"Post('{self.title}')
 ```
 
-## create database
+### create database
 
 * open terminal in project dir
 * `from flask_blog import db`
@@ -235,14 +235,14 @@ We use SQLlite for dev and then move to PostGres
   * `db.session.add(user_2)`
   * `db.session.commit()`
 
-## access data in terminal
+### access data in terminal
 
 * `User.query.all()`
 * `User.query.filter_by(username='sean').all()`
 * `User.query.first()`
 * ``db.drop_all`` deletes all files
 
-# Tutorial 5 - Package Strucutre
+## Tutorial 5 - Package Strucutre
 
 [**Tutorial source**](https://www.youtube.com/watch?v=44PvX0Yv368)
 
@@ -254,11 +254,11 @@ We use SQLlite for dev and then move to PostGres
 * Create routes.py and put all route code in there
 * Rename flask_blog to run.py
 
-# Tutorial 6 - User Authentication
+## Tutorial 6 - User Authentication
 
 [**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
 
-## addding password hashing
+### addding password hashing
 
 * dont want to use plain text password storage
   * need to use a hashing algorithim
@@ -266,7 +266,7 @@ We use SQLlite for dev and then move to PostGres
     * Add ``bcrypt = Bcrypt(app)`` to init.py
     * add following lines to the register route
 
-## Create account
+### Create account
 
 ```python
 hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -275,7 +275,7 @@ db.session.add(user)
 db.session.commit()
 ```
 
-## Verifying unique email and user
+### Verifying unique email and user
 
 Adding the following to the register form
 
@@ -287,7 +287,7 @@ def validate_username(self,username):
     
 ```
 
-## login
+### login
 
 * Create a funciton with a decerator
   * reloading a user from user id stored in session
@@ -307,7 +307,7 @@ if current_user.is_authenticated:
    return redirect(url_for('home'))
 ```
 
-## Logout
+### Logout
 
 Add the following section to a logout route
 
@@ -318,17 +318,17 @@ def logout():
     return redirect(url_for('home'))
 ```
 
-# Tutorial 7 - User Account and Profile Picture
+## Tutorial 7 - User Account and Profile Picture
 
 [**Tutorial source**](https://www.youtube.com/watch?v=CSHx6eCkmv0)
 
-## Displaying profile details on Account page
+### Displaying profile details on Account page
 
 1. added profile photo, create folder in static
 2. Add html for displaying
 3. Pull profile pic from static folder in routes.py
 
-## Editing account details
+### Editing account details
 
 1. Created update form in forms.py
 2. Added form html to accounts.html
@@ -337,11 +337,11 @@ def logout():
 5. Added html code to display form
 6. Added code to routes to save image details in database
 
-# Tutorial 8 - Create, Update, and Delete Posts
+## Tutorial 8 - Create, Update, and Delete Posts
 
 [**Tutorial source**](https://www.youtube.com/watch?v=u0oDDZrDz9U)
 
-## Creating a new post
+### Creating a new post
 
 1. Create a new post.html
    1. populate with form to add title content and post
@@ -354,13 +354,13 @@ def logout():
 
 ``Post.query.get_or_404`` returns the content or 404
 
-## Editing a post
+### Editing a post
 
 1. Add a route that takes you to edit post id
 2. only allow edit if user is author `if post.author != current_user: abort(403)`
 3. Use the create post form to pull in title and content changes and commit those
 
-## Deleteing a post
+### Deleteing a post
 
 1. Added a modal to the post.html which is a pop up for deletion confirmation
    1. Taken from bootstrap example
@@ -368,25 +368,24 @@ def logout():
    1. Only allows POST methods not gets.
    2. Only allows authors of post to post
 
-# Tutorial 9 Adding pagination
+## Tutorial 9 Adding pagination
 
 [**Tutorial source**](https://www.youtube.com/watch?v=PSWf2TjTGNY)
 
-## Adding pagination
+### Adding pagination
 
 1. `posts = Post.query.paginate(per_page=5,page=2)`
 2. `posts.total` = total num pages
-3. Adding to routes
+3. Adding to routes in code snippet below
+4. Change to home.html to look at posts.items
+5. Added buttons to flick through pages
 
 ```python
 page = request.args.get('page',1,type=int)
 posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_page=5)
 ```
 
-4. Change to home.html to look at posts.items
-5. Added buttons to flick through pages
-
-## Added user posts
+### Added user posts
 
 1. Basically same as home page but looks at user posts instead
 2. Added below to routes
@@ -399,19 +398,19 @@ posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_p
         .paginate( page= page, per_page=5)
 ```
 
-# Tutorial 10 - Email password and reset
+## Tutorial 10 - Email password and reset
 
 [**Tutorial source**](https://www.youtube.com/watch?v=vutyTx7IaAI)
 
-## Time sensitive token
+### Time sensitive token
 
 `from itsdangerous import TimedJSONWebSignatureSerializer as Serializer`
 
-# Tutorial 11 - Blueprints and Configuration
+## Tutorial 11 - Blueprints and Configuration
 
 [**Tutorial source**](https://www.youtube.com/watch?v=Wfx4YBzg16s)
 
-## Breaking up into blueprints
+### Breaking up into blueprints
 
 1. Creating a package for each type of route and object.
 2. Create a init.py in each package
@@ -425,7 +424,7 @@ posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_p
 8. import blueprints into main init.py
 9. Update all files with correct import packages
 
-# Tutorial 12 - Error Handling
+## Tutorial 12 - Error Handling
 
 [**Tutorial source**](https://www.youtube.com/watch?v=uVNfQDohYNI)
 
@@ -441,8 +440,11 @@ def error_404(error):
     return render_template('errors/404.html'),404
 ```
 
+## Tutorial 13 - Deploying to server
 
-# html learnings
+[**Tutorial source**](https://www.youtube.com/watch?v=goToXTC96Co)
+
+## html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
   * Always go inside head of document.
