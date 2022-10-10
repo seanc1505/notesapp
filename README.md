@@ -413,8 +413,17 @@ posts = Post.query.order_by(Post.date_posted.desc()).paginate( page= page, per_p
 
 ## Breaking up into blueprints
 
-1. Create a init.py in each package
-2. 
+1. Creating a package for each type of route and object.
+2. Create a init.py in each package
+   1. Each package takes a routes.py and forms.py
+3. Create a blueprint for each object type (main, users, posts)
+4. Update all templates so that url_fors to point to `'users.route'` rahter than `'route'`
+5. Update main init.py to be able to create multiple instances of website, call a function
+6. Move routes and forms from main file into their respective packages
+   1. update app.route to respective .route eg. main/users etc.
+7. Add config file to hold key variables
+8. import blueprints into main init.py
+9. Update all files with correct import packages
 
 # html learnings
 
