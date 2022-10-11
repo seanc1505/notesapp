@@ -444,6 +444,78 @@ def error_404(error):
 
 [**Tutorial source**](https://www.youtube.com/watch?v=goToXTC96Co)
 
+1. We will be using Linode to deploy
+   1. Gives flexibility but costs
+2. Create Linode account
+3. create nanode server
+4. save password
+5. ssh to server `ssh root@ip`
+6. `apt update && apt upgrade`
+7. `hostnamectl set-hostname flask-server`
+8. `nano /etc/hosts`
+   1. add ip and host name to hosts
+9. Add personal user  `adduser <USERNAME>`
+   1. Password is required
+   2. Name etc is optional
+10. Add personal user to sudo group `adduser <USERNAME> sudo`
+11. `exit` quits the ssh connection
+12. login with user this time
+13. create .ssh folder
+    1. In home terminal create ssh key using `ssh-keygen - b 4096`
+    2. `scp ~/.ssh/id_rsa.pub seanc@<ip>:~/.ssh/authorized_keys`
+    3. `sudo chmod 700 ~/.ssh/` 700 is read write and execute for user
+    4. `sudo chmod 600 ~/.ssh/*`
+14. we can now ssh without password
+15. to dissalow root logins over ssh
+    1. `sudo nano /etc/ssh/sshd_config`
+    2. We change PermitRootLogin to no
+    3. we change password auth to no
+    4. ``sudo systemctl restart sshd`` 
+16. Set up a firewall
+    1. `sudo apt install ufw`
+    2. `sudo ufw default deny incoming`
+    3. `sudo ufw default allow outgoing`
+    4. `sudo ufw allow ssh`
+    5. `sudo ufw allow 5000`
+    6. `sudo ufw enable`
+    7. `sudo ufw status`
+17. Create a requirements file for package
+    * ``pip freeze > requirements.txt``
+18. Move files to server
+    * `scp -r requirements.txt seanc@<ip>:~/`
+19. install python3 and venv
+    1. Create venv `python3 -m venv project/venv`
+    2. Enable venv `source venv/bin/activate`
+20. install packages from requirements.txt
+    1. `pip install -r requirements.txt`
+21. Test server on dev
+    1. Get env vars and move to config.json
+    2. `sudo nano /etc/config.json`
+    3. Create a json of key value pairs
+    4. Edit config.py to look for json file `with open(file name) json.load`
+    5. replace os.get with `config.get`
+22. in command line set `export FLASK_APP=run.py`
+23. `flask run --host=0.0.0.0` -  we run a local dev server on the linode
+24. install nginx with apt
+    1. Remove nginx default config `sudo rm /etc/nginx/sites-enabled/default`
+    2. Add config for flaskblog `sudo nano /etc/nginx/sites-enabled/flaskblog`
+       1. Add relevant code
+       2. try to run and see we dont have gunicorn running
+       3. `sudo nano ufw allow http/tcp` &`sudo ufw delete allow 5000` &`sudo ufw enable` 
+       4. `sudo systemctl restart nginx` - restart nginx server
+25. install gunicorn with pip
+    1. `gunicorn -w 3 run:app` main site should run now but we cant use server at all
+26. `sudo apt install supervisor` install supervisor runs gunicorn in background
+27. `sudo nano /etc/supervisor/conf.d/flaskblog.conf` add snippet to configure file for flask blog package
+28. Create log files mentioned in flaskblog .conf
+    1. `sudo touch /var/log/flaskblog/flaskblog.err.log` &
+`sudo touch /var/log/flaskblog/flaskblog.out.log`
+29. `sudo supervisorctl reload`
+30. Shouls now be working
+31. `sudo nano /etc/nginx/nginx.conf`
+     1. Edit the size of upload to 5M
+32. `sudo systemctl restart nginx`
+
 ## html learnings
 
 * ``<meta >`` tags contain metadata about the html document.
